@@ -5,10 +5,10 @@ const List = ({entries}) => {
   const listEntries = entries.map(entry => (<ListEntry item={entry} />));
   
   return (
-    <div id="">
+    <div className="myList">
       {listEntries}
     </div>
   );
 };
 
-export default ListEntry;
+export default List;

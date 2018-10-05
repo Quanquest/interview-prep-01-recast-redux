@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from './Nav.js';
 import History from './History.js';
 
 class App extends React.Component {
@@ -6,10 +7,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      back: ['abc', 'i like cake'],
       current: ['i like cats'],
       forward: ['andrew loves salad', 'asdsa', 'and he loves almonds'],
-    }
+      back: ['abc', 'i like cake'],
+    };
 
     this.updateCurrent = this.updateCurrent.bind(this);
     this.updateForward = this.updateForward.bind(this);
@@ -19,39 +20,42 @@ class App extends React.Component {
   updateCurrent (url) {
     const current = [url];
     const forward = [];
-    const back = this.state.current.concat(this.state.back);
+    const back = (this.state.current.length === 0) ? this.state.back.concat() : this.state.current.concat(this.state.back);
     this.setState({ current, forward, back });
   }
 
   updateForward () {
-    const current = [this.state.forward[0]];
-    const forward = this.state.forward.slice(1);
-    const back = this.state.current.concat(this.state.back);
+    let current = this.state.forward[0] || this.state.current[0];
+    current = [current];
+    const forward = this.state.forward.slice(1) || [];
+    const back = (this.state.forward.length === 0) ? this.state.back.concat() : this.state.current.concat(this.state.back);
+
     this.setState({ current, forward, back });
   }
   
   updateBack () {
-    const current = [this.state.back[0]];
-    const forward = this.state.current.concat(this.state.forward);
-    const back = this.state.back.slice(1);    
+    let current = this.state.back[0] || this.state.current[0];
+    current = [current];
+    const back = this.state.back.slice(1) || [];
+    const forward = (this.state.back.length === 0) ? this.state.forward.concat() : this.state.current.concat(this.state.forward);
     this.setState({ current, forward, back });
   }
 
   render() {
     return (
-      <div class="App">
-        <div class="Nav">
-          <Nav 
-            changeCurrent={this.updateCurrent} 
-            changeForward={this.updateForward} 
-            changeBack={this.updateBack} 
-          />
-        </div>
-        <div class= "History">
+      <div className="app">
+        <div className="nav">
+        <Nav 
+          changeCurrent={this.updateCurrent} 
+          changeForward={this.updateForward} 
+          changeBack={this.updateBack} 
+        />
+      </div>
+        <div className="history">
           <History 
             back={this.state.back}
-            current={this.state.current}
             forward={this.state.forward}
+            current={this.state.current}
           />
         </div>
       </div>    
@@ -59,3 +63,4 @@ class App extends React.Component {
   }
 }
 
+export default App;

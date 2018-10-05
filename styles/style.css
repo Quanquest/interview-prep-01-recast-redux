@@ -2,6 +2,30 @@
 
 body {
   background: #f1f1f1;
+  margin: 0 50px;
+}
+
+#all {
+  display: flex;
+  margin: 0 auto;
+}
+
+button {
+  margin: 5px;
+}
+
+form {
+  margin-left: 20px;
+}
+
+#history {
+  margin: 10px;
+  display: flex;
+}
+
+#bColumn, #cColumn, #fColumn {
+  border: solid 6px azure;
+  padding: 5px;
 }
 
 .navbar {
@@ -21,7 +45,7 @@ body {
 
 .search-bar .form-control {
   border-radius: 2px;
-  width: 80%
+  width: 80%;
 }
 .search-bar .btn {
   border-radius: 2px;
@@ -36,3 +60,4 @@ body {
   background: #f0f0f0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.10);
 }
+

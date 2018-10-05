@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ListEntry = ({item}) => (
-  <div class= "entry">
+  <div className="entry">
     <p>{item}</p>
   </div>
 );
